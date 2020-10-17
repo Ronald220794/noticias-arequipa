@@ -82,36 +82,30 @@
 
 #card_second{
    /* background-color: red; */
-    display: flex; 
+    /*display: flex; */
     /*margin-left: 15px;
     margin-right: -15px;  */
     /*padding-right: 20px;*/
     border: 1px solid #e8e8e8;
-    position: relative; 
+    /*position: relative;*/ 
     padding-top: 20px;
     padding-bottom: 20px;
     max-height: 150px;
-}
+    display: grid;
+    grid-template-columns: 5% 55% 5% 30% 5%;
 
-.media-body{
-    flex: 2;
-    margin-left: 20px;
-    margin-right: 20px;
-
-
-}
-
-.media-body>h5{
-    /*font-size: 15px;*/
 }
 
 #img_second{
     overflow:hidden;
-    display: flex;
-    flex: 1;
+    width:100%;
     height: 100px;
-    padding-right: 10px;
+    /*padding-right: 10px;*/
 } 
+
+#titulo_autor_1{
+    color: black;
+}
 
 
 /* CARD_THIRD*/
@@ -143,15 +137,32 @@ border-top: 1px solid #e8e8e8;
 }
 
 #colum_2{
-    background-color: yellow;
+    background-color: #FAFFF9;
     height: auto;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 20% 5% 55% 20% ;
     
 }
+
+#img_autor_colum2{
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+}
+
 
 #text_format{
     color: #343434;
     font-size: 18px;
     line-height: 30px;
     padding: 0 0 20px;
+}
+
+/* */
+
+
+@media (max-width: 575.98px){
+    #colum_2{
+       display:none; 
+    }
 }

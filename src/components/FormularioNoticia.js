@@ -69,7 +69,7 @@ export default function FormularioNoticia({ createNotic, textoBoton }) {
           <small className="text-danger font-weight-bold">Tipo es requerido</small>
         )}
       </div>
-     
+
       <div className="form-group">
         <label>Imagen</label>
         <input
@@ -258,7 +258,7 @@ export default function FormularioNoticia({ createNotic, textoBoton }) {
           className="form-control"
           id="noticia_descripcion_11"
           name="noticia_descripcion_11"
-          ref={register({required:true})}
+          ref={register({required:false})}
         />
         {errors.noticia_descripcion_11 && errors.noticia_descripcion_11.type === 'required' && (
           <small className="text-danger font-weight-bold">Contenido de la noticia</small>

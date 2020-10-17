@@ -4,8 +4,8 @@ import { obtenerNoticiasPorId } from "../services/noticiaService";
 import "../components/css/Cards.css";
 /*import { CarritoContext } from "../context/carritoContext";
 import Count from "../components/Count";
-import Swal from "sweetalert2"; 
-import Loading from "../components/Loading"; */
+import Swal from "sweetalert2";  */
+import Loading from "../components/Loading"; 
 
 export default function DetailView(props) {
   // console.log("Detalle Props", props)
@@ -13,7 +13,7 @@ export default function DetailView(props) {
   //estadoLocal
   const [miNoticia, setMiNoticia] = useState({});
   //const [cantidad, setCantidad] = useState(1);
-  /*const [cargando, setCargando] = useState(true); */
+  const [cargando, setCargando] = useState(true);
 
   //Context
   //const { carrito, anadirProducto } = useContext(CarritoContext);
@@ -23,7 +23,7 @@ export default function DetailView(props) {
     let noticiaObtenido = await obtenerNoticiasPorId(noticiaId);
     // console.log(productoObtenido);
     setMiNoticia(noticiaObtenido);
-    //setCargando(false);
+    setCargando(false);
   };
 
   /*const anadirAlCarrito = () => {
@@ -49,6 +49,10 @@ export default function DetailView(props) {
 
   return (
     <Fragment>
+      {cargando === true ? (
+        <Loading />
+      ) : (
+      
       <div class="row">
         <div className="col-12 mt-5">
           <p class="h2">{miNoticia.noticia_titulo}</p>
@@ -65,23 +69,24 @@ export default function DetailView(props) {
           <p class="h6 mt-3 text-muted">{miNoticia.noticia_imagen_descrip}</p>
           <p id="border_top"></p>
 
-          <div className="container" id="colum_2">
+          <div id="colum_2">
             <div>
               <img
-                id="img-autor"
+                id="img_autor_colum2"
                 src={miNoticia.noticia_autor_img}
                 alt=""
               />
             </div>
 
+            <div></div>
+            
             <div>
               <p class="h4">{miNoticia.noticia_autor}</p>
               <p class="h5">Informados Arequipa</p>
               <p class="h6 text-muted">informados.arequipa@gmail.com</p>
             </div>
             <div>
-              <p class="h6">{miNoticia.noticia_fech}</p>
-              <p class="h6 text-muted">{miNoticia.noticia_fech_act}</p>
+              <p class="h6 text-muted">{miNoticia.noticia_fech}</p>
             </div>
           </div>
 
@@ -101,6 +106,7 @@ export default function DetailView(props) {
 
         </div>
       </div>
+       )}
     </Fragment>
   );
 }

@@ -9,6 +9,7 @@ import "../components/css/Cards.css";
 export default function Tarjetas() {
   const [noticias_main, setNoticias_main] = useState([]);
   const [noticias_sec, setNoticias_sec] = useState([]);
+  const [noticias_ter, setNoticias_ter] = useState([]);
 
   const getNoticias_main = async () => {
     let data = await obtenerNoticias();
@@ -38,9 +39,28 @@ export default function Tarjetas() {
     setNoticias_sec(found_sec);
   };
 
+  const getNoticias_ter = async () => {
+    let data = await obtenerNoticias();
+
+    //let found = data.filter(not => not.noticia_tipo === "1")
+    let found_ter = data.filter((not) => {
+      return not.noticia_tipo === "3";
+    });
+
+    // obtener fecha exacta
+
+    console.log(found_ter);
+
+    setNoticias_ter(found_ter);
+  };
+
+
+
+
   useEffect(() => {
     getNoticias_main();
     getNoticias_sec();
+    getNoticias_ter();
   }, []);
 
   return (
@@ -53,7 +73,7 @@ export default function Tarjetas() {
           <Cardsecond noticia={notic} key={i} />
         ))}
       </div>
-      {noticias_sec.map((notic, i) => (
+      {noticias_ter.map((notic, i) => (
         <Cardthird noticia={notic} key={i} />
       ))}
 
