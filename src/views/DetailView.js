@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { obtenerNoticiasPorId } from "../services/noticiaService";
-import '../components/css/DetailView.css';
+/*import '../components/css/DetailView.css';*/
+import "../components/css/Cards.css";
 /*import { CarritoContext } from "../context/carritoContext";
 import Count from "../components/Count";
 import Swal from "sweetalert2"; 
@@ -41,7 +42,6 @@ export default function DetailView(props) {
       showConfirmButton: false,
       timer: 2000,
     });   */
-  
 
   useEffect(() => {
     getNoticia();
@@ -49,72 +49,58 @@ export default function DetailView(props) {
 
   return (
     <Fragment>
-      
-        <div class="grid">
-            <div class="element0">
-              <p></p>
-            </div>
+      <div class="row">
+        <div className="col-12 mt-5">
+          <p class="h2">{miNoticia.noticia_titulo}</p>
+          <p class="h5 my-3">{miNoticia.noticia_resumen}</p>
+        </div>
 
-            <div class="element1">
-              <h1>{miNoticia.noticia_titulo}</h1>
-            </div>
+        <div className="col-lg-8 col-md-12 col-sm-12" id="colum_1">
+          <img
+            class="mt-1"
+            id="imagen_colum_1"
+            src={miNoticia.noticia_imagen}
+            alt=""
+          />
+          <p class="h6 mt-3 text-muted">{miNoticia.noticia_imagen_descrip}</p>
+          <p id="border_top"></p>
 
-            <div class="element2">
-              <h2>{miNoticia.noticia_resumen}</h2>
-            </div>
-
-            <div class="element3">
-              
-            </div>
-
-            <div class="element4">
+          <div className="container" id="colum_2">
+            <div>
               <img
-                src={miNoticia.noticia_imagen}
-                alt="..."
-                className="img-fluid"
+                id="img-autor"
+                src={miNoticia.noticia_autor_img}
+                alt=""
               />
             </div>
 
-            <div class="element5">
-              <h3>{miNoticia.noticia_imagen_descrip}</h3>
+            <div>
+              <p class="h4">{miNoticia.noticia_autor}</p>
+              <p class="h5">Informados Arequipa</p>
+              <p class="h6 text-muted">informados.arequipa@gmail.com</p>
             </div>
+            <div>
+              <p class="h6">{miNoticia.noticia_fech}</p>
+              <p class="h6 text-muted">{miNoticia.noticia_fech_act}</p>
+            </div>
+          </div>
 
-            <div class="element6">
-                <div>
-                  <img class="img_noticia_autor"
-                  src={miNoticia.noticia_autor_img}
-                  alt="..."
-                  
-                  />
-                </div>
-                <div>
-                   <p class="nombre_autor">{miNoticia.noticia_autor}</p>
-                   <p class="ps1">Informados Arequipa</p>
-                   <p class="ps2">informados.arequipa@gmail.com</p>
-                  
-                </div>
-                <div>
-                   <p class="ps1">{miNoticia.noticia_fech}</p>
-                   <p class="ps2">{miNoticia.noticia_fech_act}</p>
-                </div>
-            </div>
-
-            <div class="element7">
-              <p class="p_text_1">{miNoticia.noticia_descripcion_1}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_2}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_3}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_4}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_5}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_6}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_7}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_8}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_9}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_10}</p>
-              <p class="p_text_2">{miNoticia.noticia_descripcion_11}</p>
-            </div>
+          <div>
+            <p class="font-weight-bold mt-5" id="text_format">{miNoticia.noticia_descripcion_1}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_2}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_3}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_4}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_5}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_6}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_7}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_8}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_9}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_10}</p>
+            <p id="text_format">{miNoticia.noticia_descripcion_11}</p>
+          </div> 
 
         </div>
-      
+      </div>
     </Fragment>
-  )
+  );
 }

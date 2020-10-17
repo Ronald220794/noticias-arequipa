@@ -1,11 +1,16 @@
 import React from 'react'
-import Tarjetas from '../components/Tarjetas';
+import Tarjetas from '../components/Tarjetas'
+import Logoimg from '../components/Logoimg'
+
+
 
 export default function HomeView() {
   return (
-    <div className="mt-4">
-      <h1></h1>
-      <Tarjetas/>
+    <div className="">
+     
+     
+      <Logoimg></Logoimg>
+      <Tarjetas></Tarjetas>
     </div>
   )
 }

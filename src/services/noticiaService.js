@@ -21,25 +21,77 @@ const obtenerNoticiasPorId = async (noticia_id) => {
   }
 }
 
-/*const crearProducto = async (objProducto) => {
+const obtenerNoticiasPorTipo = async (noticia_tipo) => {
+  try {
+    let {data} = await axios.get(`${URL}/${noticia_tipo}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
+
+const crearNoticia = async (objNoticia) => {
   try{
     let headers = {
       'Content-Type':'application/json'
     }
-    let {data} = await axios.post(URL,objProducto,{headers})
+    let {data} = await axios.post(URL,objNoticia,{headers})
     return data;
   }catch(error){
     return error;
   }
 }
 
-const borrarProducto = async (prod_id) => {
+const borrarNoticia = async (noticia_id) => {
   try {
-    let {data} = await axios.delete(`${URL}/${prod_id}`);
+    let {data} = await axios.delete(`${URL}/${noticia_id}`);
     return data;
   } catch (error) {
     return error;
   }
-} */
+} 
 
-export {obtenerNoticias, obtenerNoticiasPorId}
+const editarNoticia = async (objNoticia, noticia_id) => {
+  try {
+    let headers = {
+      "Content-Type": "application/json",
+    };
+    let { data } = await axios.put(`${URL}/${noticia_id}`, objNoticia, { headers });
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+const subirImagen = (imagen, refStorage) => {
+  return new Promise((resolve, reject) => {
+    const tarea = refStorage.put(imagen);
+
+    tarea.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        reject(error);
+      },
+      //esto ya nos interesa, aca ya subio la imagen
+      () => {
+        tarea.snapshot.ref.getDownloadURL()
+        .then((urlimagen) => {
+          console.log(urlimagen)
+          resolve(urlimagen)
+        })
+        .catch((error) => reject(error))
+      }
+    );
+  });
+};
+
+export {
+  obtenerNoticias, 
+  obtenerNoticiasPorId, 
+  obtenerNoticiasPorTipo, 
+  crearNoticia,
+  borrarNoticia,
+  editarNoticia,
+  subirImagen
+}
